@@ -119,44 +119,13 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
                     children: [
                       const SizedBox(height: 32),
 
-                      // --- TOP BRAND HEADER ---
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                l10n.brandName,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF0F172A),
-                                  letterSpacing: 1.2,
-                                ),
-                              ),
-                              Text(
-                                l10n.brandSubtitle,
-                                style: const TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF64748B),
-                                  letterSpacing: 2.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 8),
-                          // Logo Symbol
-                          Container(
-                            width: 28,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: const Color(0xFF00A3E0), width: 2.5),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        ],
+                      // --- TOP BRAND LOGO ---
+                      Center(
+                        child: Image.asset(
+                          'assets/seenergy_logo.png',
+                          height: 70,
+                          fit: BoxFit.contain,
+                        ),
                       ),
 
                       const SizedBox(height: 36),

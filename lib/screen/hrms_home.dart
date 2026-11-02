@@ -97,25 +97,12 @@ class _HrmsHomeScreenState extends State<HrmsHomeScreen> {
         titleSpacing: 16,
         title: Row(
           children: [
-            Container(
-              width: 14,
-              height: 14,
-              decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFF00A3E0), width: 2.5),
-                borderRadius: BorderRadius.circular(6),
-              ),
+            Image.asset(
+              'assets/seenergy_logo.png',
+              height: 26,
+              fit: BoxFit.contain,
             ),
             const SizedBox(width: 8),
-            const Text(
-              'SEENERGY',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0F172A),
-                letterSpacing: 1.1,
-              ),
-            ),
-            const SizedBox(width: 4),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
