@@ -9,10 +9,7 @@ import 'features/auth/presentation/screens/login_screen.dart';
 class SeenergyApp extends StatelessWidget {
   final LanguageController languageController;
 
-  const SeenergyApp({
-    super.key,
-    required this.languageController,
-  });
+  const SeenergyApp({super.key, required this.languageController});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,7 @@ class SeenergyApp extends StatelessWidget {
       builder: (context, _) {
         return MaterialApp(
           title: 'Seenergy Capital',
-          debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: true,
           theme: AppTheme.lightTheme,
           locale: languageController.currentLocale,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -31,12 +28,9 @@ class SeenergyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: LoginScreen(
-            languageController: languageController,
-          ),
+          home: LoginScreen(languageController: languageController),
         );
       },
     );
   }
 }
-
