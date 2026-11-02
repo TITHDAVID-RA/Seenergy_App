@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../localization/app_localizations.dart';
 import '../localization/language_controller.dart';
+import 'hrms_home.dart';
 
 class MobileLoginScreen extends StatefulWidget {
   const MobileLoginScreen({super.key});
@@ -10,15 +11,93 @@ class MobileLoginScreen extends StatefulWidget {
 }
 
 class _MobileLoginScreenState extends State<MobileLoginScreen> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  // Test email pre-filled for easy testing as requested
+  final _emailController = TextEditingController(text: 'admin@seenergy.com');
+  final _passwordController = TextEditingController(text: 'password123');
   bool _obscurePassword = true;
+  bool _isLoading = false;
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  /// Automatically fills test credentials into the fields
+  void _fillTestCredentials() {
+    setState(() {
+      _emailController.text = 'admin@seenergy.com';
+      _passwordController.text = 'password123';
+    });
+  }
+
+  /// Login authentication method
+  Future<void> _handleLogin() async {
+    final l10n = AppLocalizations.of(context);
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+
+    // Validate email
+    if (email.isEmpty) {
+      _showError(l10n.emptyEmailError);
+      return;
+    }
+
+    if (!email.contains('@') || !email.contains('.')) {
+      _showError(l10n.invalidEmailError);
+      return;
+    }
+
+    // Validate password
+    if (password.isEmpty) {
+      _showError(l10n.emptyPasswordError);
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Simulate authentication processing
+    await Future.delayed(const Duration(milliseconds: 600));
+
+    if (!mounted) return;
+
+    // Verify test credentials (or accept valid test account)
+    final isValidTestAccount =
+        (email.toLowerCase() == 'admin@seenergy.com' && password == 'password123') ||
+        (email.isNotEmpty && password.length >= 6);
+
+    if (isValidTestAccount) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      // Navigate to HRMS Home Screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HrmsHomeScreen(userEmail: email),
+        ),
+      );
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      _showError(l10n.loginFailedError);
+    }
+  }
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: const Color(0xFFEF4444),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+    );
   }
 
   @override
@@ -101,7 +180,47 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 20),
+
+                      // --- TEST CREDENTIALS CHIP ---
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF2563EB).withValues(alpha: 0.08),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: const Color(0xFF2563EB).withValues(alpha: 0.2)),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.info_outline_rounded, size: 16, color: Color(0xFF2563EB)),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                l10n.testAccountHint,
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  color: Color(0xFF1E3A8A),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: _fillTestCredentials,
+                              child: Text(
+                                l10n.autoFillTest,
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF2563EB),
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
 
                       // --- EMAIL FIELD ---
                       Text(
@@ -185,9 +304,7 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
 
                       // --- LOG IN BUTTON ---
                       ElevatedButton(
-                        onPressed: () {
-                          // Handle login authentication
-                        },
+                        onPressed: _isLoading ? null : _handleLogin,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF2563EB),
                           foregroundColor: Colors.white,
@@ -197,10 +314,19 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child: Text(
-                          l10n.logIn,
-                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
+                        child: _isLoading
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text(
+                                l10n.logIn,
+                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
                       ),
 
                       const SizedBox(height: 40),
