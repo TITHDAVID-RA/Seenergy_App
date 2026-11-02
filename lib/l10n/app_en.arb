@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "brandName": "SEENERGY",
+  "brandSubtitle": "CAPITAL",
+  "signInTitle": "Sign In",
+  "signInSubtitle": "Welcome back! Enter your details to continue.",
+  "emailLabel": "EMAIL ADDRESS *",
+  "emailHint": "Email Address",
+  "passwordLabel": "PASSWORD *",
+  "passwordHint": "Password",
+  "logInButton": "Log In",
+  "protectedBy": "Protected by Enterprise Security",
+  "copyright": "© SEENERGY CAPITAL. All rights reserved.",
+  "language": "Language",
+  "english": "English",
+  "khmer": "ភាសាខ្មែរ",
+  "switchLanguage": "Switch Language",
+  "selectLanguage": "Select Language"
+}
+

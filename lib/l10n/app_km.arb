@@ -1,0 +1,20 @@
+{
+  "@@locale": "km",
+  "brandName": "SEENERGY",
+  "brandSubtitle": "CAPITAL",
+  "signInTitle": "ចូលគណនី",
+  "signInSubtitle": "សូមស្វាគមន៍ត្រឡប់មកវិញ! សូមបញ្ចូលព័ត៌មានរបស់អ្នកដើម្បីបន្ត។",
+  "emailLabel": "អាសយដ្ឋានអ៊ីមែល *",
+  "emailHint": "បញ្ចូលអាសយដ្ឋានអ៊ីមែល",
+  "passwordLabel": "ពាក្យសម្ងាត់ *",
+  "passwordHint": "បញ្ចូលពាក្យសម្ងាត់",
+  "logInButton": "ចូលគណនី",
+  "protectedBy": "ការពារដោយប្រព័ន្ធសុវត្ថិភាពកម្រិតសហគ្រាស",
+  "copyright": "© SEENERGY CAPITAL. រក្សាសិទ្ធិគ្រប់យ៉ាង។",
+  "language": "ភាសា",
+  "english": "English",
+  "khmer": "ភាសាខ្មែរ",
+  "switchLanguage": "ប្តូរភាសា",
+  "selectLanguage": "ជ្រើសរើសភាសា"
+}
+

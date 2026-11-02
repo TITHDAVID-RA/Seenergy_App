@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:seenergy_capital/screen/login.dart';
+import 'app.dart';
+import 'core/localization/language_controller.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final languageController = LanguageController();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MobileLoginScreen(),
-    );
-  }
+  runApp(SeenergyApp(languageController: languageController));
 }
