@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../localization/app_localizations.dart';
 import '../localization/language_controller.dart';
 import 'login.dart';
+import 'Attentdance.dart';
 
 /// Full-featured HRMS (Human Resource Management System) Dashboard screen.
 class HrmsHomeScreen extends StatefulWidget {
@@ -377,11 +378,20 @@ class _HrmsHomeScreenState extends State<HrmsHomeScreen> {
         ),
         const SizedBox(width: 10),
         Expanded(
-          child: _buildKpiCard(
-            title: l10n.attendanceRate,
-            value: '96%',
-            icon: Icons.check_circle_outline_rounded,
-            color: const Color(0xFF10B981),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AttendancePage()),
+              );
+            },
+            borderRadius: BorderRadius.circular(12),
+            child: _buildKpiCard(
+              title: l10n.attendanceRate,
+              value: '96%',
+              icon: Icons.check_circle_outline_rounded,
+              color: const Color(0xFF10B981),
+            ),
           ),
         ),
         const SizedBox(width: 10),
@@ -482,6 +492,13 @@ class _HrmsHomeScreenState extends State<HrmsHomeScreen> {
 
         return InkWell(
           onTap: () {
+            if (item['title'] == l10n.moduleAttendance) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AttendancePage()),
+              );
+              return;
+            }
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('${item['title']} module opened'),

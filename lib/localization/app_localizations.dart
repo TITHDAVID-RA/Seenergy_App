@@ -69,6 +69,21 @@ class AppLocalizations {
       'logoutConfirm': 'Do you want to log out?',
       'logout': 'Log Out',
       'cancel': 'Cancel',
+
+      // Attendance Module Strings
+      'myAttendance': 'My Attendance',
+      'teamAttendance': 'Team Overview',
+      'clockOut': 'Clock Out',
+      'present': 'Present',
+      'late': 'Late',
+      'absent': 'Absent',
+      'workingHours': 'Working Hours',
+      'officeLocation': 'Seenergy HQ (In Radius)',
+      'requestRegularization': 'Request Regularization',
+      'regularizationSubmitted': 'Regularization request submitted to HR manager',
+      'reasonHint': 'Reason (e.g., Client meeting, forgot punch)...',
+      'submit': 'Submit',
+      'history': 'Attendance History',
     },
     'km': {
       // Login Strings
@@ -119,6 +134,21 @@ class AppLocalizations {
       'logoutConfirm': 'តើអ្នកពិតជាចង់ចាកចេញមែនទេ?',
       'logout': 'ចាកចេញ',
       'cancel': 'បោះបង់',
+
+      // Attendance Module Strings
+      'myAttendance': 'វត្តមានផ្ទាល់ខ្លួន',
+      'teamAttendance': 'ទិដ្ឋភាពរួមក្រុមការងារ',
+      'clockOut': 'កត់ត្រាម៉ោងចេញ',
+      'present': 'មានវត្តមាន',
+      'late': 'យឺត',
+      'absent': 'អវត្តមាន',
+      'workingHours': 'ម៉ោងធ្វើការ',
+      'officeLocation': 'ការិយាល័យកណ្តាល Seenergy (ក្នុងបរិវេណ)',
+      'requestRegularization': 'ស្នើសុំកែសម្រួលវត្តមាន',
+      'regularizationSubmitted': 'សំណើកែសម្រួលវត្តមានត្រូវបានបញ្ជូនទៅអ្នកគ្រប់គ្រង',
+      'reasonHint': 'មូលហេតុ (ឧ. ប្រជុំជាមួយអតិថិជន, ភ្លេចស្កេន)...',
+      'submit': 'បញ្ជូនសំណើ',
+      'history': 'ប្រវត្តិកត់ត្រាវត្តមាន',
     },
   };
 
@@ -176,6 +206,21 @@ class AppLocalizations {
   String get logoutConfirm => _get('logoutConfirm');
   String get logout => _get('logout');
   String get cancel => _get('cancel');
+
+  // Attendance Module Getters
+  String get myAttendance => _get('myAttendance');
+  String get teamAttendance => _get('teamAttendance');
+  String get clockOut => _get('clockOut');
+  String get present => _get('present');
+  String get late => _get('late');
+  String get absent => _get('absent');
+  String get workingHours => _get('workingHours');
+  String get officeLocation => _get('officeLocation');
+  String get requestRegularization => _get('requestRegularization');
+  String get regularizationSubmitted => _get('regularizationSubmitted');
+  String get reasonHint => _get('reasonHint');
+  String get submit => _get('submit');
+  String get history => _get('history');
 }
 
 class _AppLocalizationsDelegate
